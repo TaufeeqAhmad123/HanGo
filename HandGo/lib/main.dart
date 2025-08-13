@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/routes/app_router.dart';
 
 import 'package:flutter_application_1/views/splash/splash.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -15,11 +16,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveSizer(
       builder: (context, orientation, screenType) {
-        return MaterialApp(
+        return MaterialApp.router(
           debugShowCheckedModeBanner: false,
           title: 'HandGo',
-      
-          home: SplashScreen(),
+        routerConfig: appRouter,
         );
       },
     );
