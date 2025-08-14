@@ -1,4 +1,6 @@
 import 'package:flutter_application_1/core/routes/routes.dart';
+import 'package:flutter_application_1/views/Auth/login.dart';
+import 'package:flutter_application_1/views/Auth/signup.dart';
 import 'package:flutter_application_1/views/home/home.dart';
 import 'package:flutter_application_1/views/onBoarding/onboarding.dart';
 import 'package:flutter_application_1/views/splash/splash.dart';
@@ -13,6 +15,14 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.onboarding,
       builder: (context, state) => const OnboardingScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.signup,
+      builder: (context, state) => const SignupScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.login,
+      builder: (context, state) => const LoginScreen(),
     ),
     GoRoute(
       path: AppRoutes.home,

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/routes/routes.dart';
 import 'package:flutter_application_1/core/utils/app_style.dart';
 import 'package:flutter_application_1/core/utils/colors.dart';
 import 'package:flutter_application_1/core/utils/extantion.dart';
 import 'package:flutter_application_1/core/utils/image.dart';
 import 'package:flutter_application_1/model/onbaording_model.dart';
+import 'package:go_router/go_router.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -69,57 +72,69 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         data.description,
                         style: regular16.copyWith(color: AppColors.KGreyColor),
                       ),
-                      30.vSpace,
-                      index== 1 ?  ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              fixedSize: Size(375, 70),
-                              backgroundColor: AppColors.KprimaryColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                            ),
-                            onPressed: () {
-                              
-                            },
-                            child: Text(
-                              'Get Started',
-                              style: bold18.copyWith(
-                                color: AppColors.KWhiteColor,
-                              ),
-                            ),
-                          ) :
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          TextButton(
-                            onPressed: () {},
-                            child: Text('Skip', style: bold18),
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              fixedSize: Size(130, 70),
-                              backgroundColor: AppColors.KprimaryColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                            ),
-                            onPressed: () {
-                              if (index == 0) {
-                                _pageController.nextPage(
-                                  duration: Duration(milliseconds: 300),
-                                  curve: Curves.easeIn,
-                                );
-                              }
-                            },
-                            child: Text(
-                              'Next',
-                              style: bold18.copyWith(
-                                color: AppColors.KWhiteColor,
-                              ),
-                            ),
-                          ),
-                        ],
+                      20.vSpace,
+                      SmoothPageIndicator(
+                        controller: _pageController,
+                        count: onboardingData.length,
+                        effect: WormEffect(
+                          dotHeight: 10,
+                          dotWidth: 30,
+                          activeDotColor: AppColors.KprimaryColor,
+                          dotColor: AppColors.KGreyColor,
+                        ),
                       ),
+                      30.vSpace,
+                      index == 1
+                          ? ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                fixedSize: Size(375, 70),
+                                backgroundColor: AppColors.KprimaryColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                              ),
+                              onPressed: () {
+                                context.go(AppRoutes.signup);
+                              },
+                              child: Text(
+                                'Get Started',
+                                style: bold18.copyWith(
+                                  color: AppColors.KWhiteColor,
+                                ),
+                              ),
+                            )
+                          : Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                TextButton(
+                                  onPressed: () {},
+                                  child: Text('Skip', style: bold18),
+                                ),
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    fixedSize: Size(130, 70),
+                                    backgroundColor: AppColors.KprimaryColor,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(50),
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    if (index == 0) {
+                                      _pageController.nextPage(
+                                        duration: Duration(milliseconds: 300),
+                                        curve: Curves.easeIn,
+                                      );
+                                    }
+                                  },
+                                  child: Text(
+                                    'Next',
+                                    style: bold18.copyWith(
+                                      color: AppColors.KWhiteColor,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                     ],
                   ),
                 ),

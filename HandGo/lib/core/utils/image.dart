@@ -11,3 +11,5 @@ const calender = 'assets/icon/calender.svg';
 const heart = 'assets/icon/heart.svg';
 const sms = 'assets/icon/sms.svg';
 const profile = 'assets/icon/profile.svg';
+const facebook = 'assets/icon/facebook.svg';
+const google = 'assets/icon/google.svg';
