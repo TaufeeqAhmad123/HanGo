@@ -34,5 +34,5 @@ import 'package:google_fonts/google_fonts.dart';
   TextStyle bold28 = GoogleFonts.urbanist(fontSize: 28, fontWeight: FontWeight.bold,color: Colors.black);
   TextStyle bold30 = GoogleFonts.urbanist(fontSize: 30, fontWeight: FontWeight.bold,color: Colors.black);
   TextStyle bold32 = GoogleFonts.urbanist(fontSize: 32, fontWeight: FontWeight.bold,color: Colors.black);
-  TextStyle bold34 = GoogleFonts.urbanist(fontSize: 34, fontWeight: FontWeight.bold,color: Colors.black);
+  TextStyle bold34 = GoogleFonts.goblinOne(fontSize: 34, fontWeight: FontWeight.bold,color: Colors.black);
 
