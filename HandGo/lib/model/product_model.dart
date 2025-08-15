@@ -26,19 +26,7 @@ class ProductModel {
   });
 }
 
-class ReviewModel {
-  final String reviewerName;
-  final int daysAgo;
-  final String reviewerImage;
-  final String reviewText;
 
-  ReviewModel({
-    required this.reviewerName,
-    required this.daysAgo,
-    required this.reviewerImage,
-    required this.reviewText,
-  });
-}
 List<ProductModel> products = [
   ProductModel(
     title: "Home Deep Cleaning",
@@ -57,10 +45,12 @@ List<ProductModel> products = [
         daysAgo: 2,
         reviewerImage: "https://randomuser.me/api/portraits/men/32.jpg",
         reviewText: "Excellent service! My home looks brand new.",
+        rating: 5.0,
       ),
       ReviewModel(
         reviewerName: "Sana Ahmed",
         daysAgo: 5,
+         rating: 4.7,
         reviewerImage: "https://randomuser.me/api/portraits/women/45.jpg",
         reviewText: "Very professional and on time.",
       ),
@@ -79,10 +69,12 @@ List<ProductModel> products = [
     reviewCount: 156,
     reviews: [
       ReviewModel(
-        reviewerName: "Hassan Raza",
+        reviewerName:
+         "Hassan Raza",
         daysAgo: 3,
         reviewerImage: "https://randomuser.me/api/portraits/men/50.jpg",
         reviewText: "My carpet looks and smells amazing now!",
+        rating: 5.0,
       ),
     ],
   ),
@@ -101,12 +93,14 @@ List<ProductModel> products = [
       ReviewModel(
         reviewerName: "Fatima Noor",
         daysAgo: 7,
+         rating: 4.7,
         reviewerImage: "https://randomuser.me/api/portraits/women/60.jpg",
         reviewText: "They repaired my dining table perfectly!",
       ),
       ReviewModel(
         reviewerName: "Usman Tariq",
         daysAgo: 10,
+         rating: 4.7,
         reviewerImage: "https://randomuser.me/api/portraits/men/41.jpg",
         reviewText: "Great attention to detail and affordable prices.",
       ),
@@ -127,6 +121,7 @@ List<ProductModel> products = [
       ReviewModel(
         reviewerName: "Zara Qureshi",
         daysAgo: 1,
+         rating: 4.7,
         reviewerImage: "https://randomuser.me/api/portraits/women/15.jpg",
         reviewText: "The paint job was flawless and the colors are perfect!",
       ),
@@ -149,6 +144,7 @@ List<ProductModel> products = [
         daysAgo: 4,
         reviewerImage: "https://randomuser.me/api/portraits/men/12.jpg",
         reviewText: "My gate looks brand new, very happy with the result!",
+        rating: 5.0,
       ),
     ],
   ),

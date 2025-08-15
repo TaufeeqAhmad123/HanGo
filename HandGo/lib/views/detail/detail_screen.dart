@@ -81,10 +81,12 @@ class DetailScreen extends StatelessWidget {
                     children: [
                           ListTile(leading: CircleAvatar(
                             backgroundImage: NetworkImage(product.reviews[i].reviewerImage),
-                          ),),
+                          ),
                           title: Text(product.reviews[i].reviewerName),
                           subtitle: Text(product.reviews[i].reviewText),
                           trailing: Text('${product.reviews[i].rating}⭐'),
+                          ),
+                          
                     ],
                   );
                 }),)
