@@ -32,7 +32,7 @@ List<ProductModel> products = [
     title: "Home Deep Cleaning",
     providerName: "Robert Shavi",
     description:
-        "A complete home deep cleaning service including kitchen, bathrooms, floors, and furniture polishing. Ideal for seasonal cleaning or before special events. A complete home deep cleaning service including kitchen, bathrooms, floors, and furniture polishing. Ideal for seasonal cleaning or before special events.",
+        "A complete home deep cleaning service including kitchen, bathrooms, floors, and furniture polishing. Ideal for seasonal cleaning or before special events. A complete home deep cleaning service including kitchen, bathrooms.",
     image: p2,
     price: 5000,
     customerNumber: 250,
@@ -60,7 +60,7 @@ List<ProductModel> products = [
     title: "Carpet Cleaning",
     providerName: "James Carter",
     description:
-        "Deep shampoo cleaning for carpets to remove dirt, stains, and bad odor, leaving your carpet fresh and soft.A complete home deep cleaning service including kitchen, bathrooms, floors, and furniture polishing. Ideal for seasonal cleaning or before special events.",
+        "Deep shampoo cleaning for carpets to remove dirt, stains, and bad odor, leaving your carpet fresh and soft.A complete home deep cleaning service including kitchen.",
     image: p3,
     price: 3000,
     customerNumber: 180,

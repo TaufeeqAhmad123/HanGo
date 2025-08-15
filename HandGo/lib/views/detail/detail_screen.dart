@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/routes/routes.dart';
 import 'package:flutter_application_1/core/utils/app_style.dart';
 import 'package:flutter_application_1/core/utils/colors.dart';
 import 'package:flutter_application_1/core/utils/extantion.dart';
@@ -16,81 +17,132 @@ class DetailScreen extends StatelessWidget {
         children: [
           imageWidget(product: product),
           roundedContainErWidget(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-              
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      product.title,
-                      style: bold24
-                    ),
-                    IconButton(onPressed: () {}, icon: Icon(Icons.favorite_outline)),
-                  ],
-                ),
-                10.vSpace,
-                Row(children: [
-                  Text(product.providerName,style: semiBold18.copyWith(color: AppColors.KGreyColor),),
-                  35.hSpace,
-                  Text("⭐ ${product.rating} (${product.reviewCount})",style: semiBold18.copyWith(color: AppColors.KGreyColor),),
-                ],),
-                10.vSpace,
-                 Text('About The Services', style: bold24),
-                10.vSpace,
-                 Text(product.description, style: regular16.copyWith(color: AppColors.KGreyColor),),
-                 25.vSpace,
-                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        Text('${product.customerNumber}K+',style: bold20,),
-                        Text('Happy Customers',style: semiBold18.copyWith(color: AppColors.KGreyColor),),
-                      ],
-                    ),Column(
-                      children: [
-                        Text('${product.satisfactionPercentage}%',style: bold20,),
-                        Text('Client Satisfaction',style: semiBold18.copyWith(color: AppColors.KGreyColor),),
-                      ],
-                    )
-                  ],
-                 ),
-                 20.vSpace,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(' Reviews', style: bold24),
-                    TextButton(
-                      onPressed: () {
-                        // Handle view all action
-                      },
-                      child: Text(
-                        'View All',
-                        style: semiBold20.copyWith(
-                          color: AppColors.KprimaryColor,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(product.title, style: bold24),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.favorite_outline),
+                      ),
+                    ],
+                  ),
+                  10.vSpace,
+                  Row(
+                    children: [
+                      Text(
+                        product.providerName,
+                        style: semiBold18.copyWith(color: AppColors.KGreyColor),
+                      ),
+                      35.hSpace,
+                      Text(
+                        "⭐ ${product.rating} (${product.reviewCount})",
+                        style: semiBold18.copyWith(color: AppColors.KGreyColor),
+                      ),
+                    ],
+                  ),
+                  10.vSpace,
+                  Text('About The Services', style: bold24),
+                  10.vSpace,
+                  Text(
+                    product.description,
+                    style: regular16.copyWith(color: AppColors.KGreyColor),
+                  ),
+                  25.vSpace,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Text('${product.customerNumber}K+', style: bold20),
+                          Text(
+                            'Happy Customers',
+                            style: semiBold18.copyWith(
+                              color: AppColors.KGreyColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            '${product.satisfactionPercentage}%',
+                            style: bold20,
+                          ),
+                          Text(
+                            'Client Satisfaction',
+                            style: semiBold18.copyWith(
+                              color: AppColors.KGreyColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  20.vSpace,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(' Reviews', style: bold24),
+                      TextButton(
+                        onPressed: () {
+                          // Handle view all action
+                        },
+                        child: Text(
+                          'View All',
+                          style: semiBold20.copyWith(
+                            color: AppColors.KprimaryColor,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                20.vSpace,
-                SizedBox(height: 250,child: ListView.builder(itemBuilder: (context,i){
-                  return Column(
-                    children: [
-                          ListTile(leading: CircleAvatar(
-                            backgroundImage: NetworkImage(product.reviews[i].reviewerImage),
-                          ),
-                          title: Text(product.reviews[i].reviewerName),
-                          subtitle: Text(product.reviews[i].reviewText),
-                          trailing: Text('${product.reviews[i].rating}⭐'),
-                          ),
-                          
                     ],
-                  );
-                }),)
-              ],
+                  ),
+
+                  SizedBox(
+                    height: 250,
+
+                    child: ListView.builder(
+                      itemCount: product.reviews.length,
+                     scrollDirection: Axis.horizontal,
+//shrinkWrap: true, // ✅ makes it take only needed space
+                      physics:
+                          ScrollPhysics(), // ✅ smooth scroll inside parent scroll
+                      itemBuilder: (context, i) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ListTile(
+                              leading: CircleAvatar(
+                                backgroundImage: NetworkImage(
+                                  product.reviews[i].reviewerImage,
+                                ),
+                              ),
+                              title: Text(product.reviews[i].reviewerName),
+                              subtitle: Text(
+                                product.reviews[i].daysAgo == 1
+                                    ? '1 day ago'
+                                    : '${product.reviews[i].daysAgo} days ago',
+                              ),
+                              trailing: Text('${product.reviews[i].rating}⭐'),
+                            ),
+                            10.vSpace,
+                            Text(
+                              product.reviews[i].reviewText,
+                              style: regular16.copyWith(
+                                color: AppColors.KGreyColor,
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -108,7 +160,7 @@ class roundedContainErWidget extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
-        height: 680,
+        height: MediaQuery.of(context).size.height * 0.65,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -157,7 +209,7 @@ class imageWidget extends StatelessWidget {
               ),
               child: IconButton(
                 onPressed: () {
-                  context.pop();
+                  context.go(AppRoutes.home);
                 },
                 icon: Icon(Icons.arrow_back, size: 30),
               ),
